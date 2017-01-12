@@ -4,7 +4,15 @@
 
 var express = require('express');
 var app = express();
-var handlebars = require('express-handlebars').create({defaultLaout: 'main'});
+var handlebars = require('express-handlebars').create({defaultLayout: 'main'});
+
+var fortunes = [
+    'Conquer your fears or they will conquer you.',
+    'Rivers need springs.',
+    'Do not fear what you don\'t know.',
+    'you will have a pleasant surprise.',
+    'Whenever possible, keep it simple.'
+];
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -16,7 +24,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/about', function (req, res) {
-    res.render('about');
+    res.render('about', {fortune: fortunes[Math.floor(Math.random() * fortunes.length)]});
 });
 
 app.use(express.static(__dirname + '/public'));

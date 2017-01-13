@@ -38,5 +38,5 @@ suite('Cross-Page Tests', function(){
             assert(browser.field('referrer').value === '');
             done();
         });
-    })
+    });
 });

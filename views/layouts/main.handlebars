@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Meadowlark Travel</title>
+    {{{_sections.head}}}
+    <link rel="stylesheet" href="/css/main.css"/>
     {{#if showTests}}
         <link rel="stylesheet" href="/vendor/mocha.css"/>
     {{/if}}
@@ -9,6 +11,8 @@
 </head>
 <body>
 <img src="/img/logo.png" alt="Meadowlark Travel Logo"/></head>
+<a href="/">home</a>
+<hr/>
 {{{body}}}
 {{#if showTests}}
     <div id="mocha"></div>
@@ -24,6 +28,7 @@
     {{/if}}
     <script>mocha.run();</script>
 {{/if}}
-
+{{{_sections.body}}}
+{{{_sections.jquery}}}
 </body>
 </html>

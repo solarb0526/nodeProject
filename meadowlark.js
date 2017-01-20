@@ -5,6 +5,7 @@
 var express = require('express');
 var foreach = require('foreach');
 var app = express();
+
 var handlebars = require('express-handlebars').create({
     defaultLayout: 'main',
     helpers: {
@@ -28,8 +29,11 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 var requests = require('./lib/requests');
+var upload = require('./lib/upload');
 foreach(requests.gets, function(fn, url){ app.get(url, fn); });
 foreach(requests.posts, function(fn, url){ app.post(url, fn); });
+
+app.use('/upload', upload.upload);
 
 app.use(express.static(__dirname + '/public'));
 

@@ -14,6 +14,12 @@
     <script src="/vendor/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 </head>
 <body>
+{{#if flash}}
+    <div class="alert alert-dismissible alert-{{flash.type}}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">$times;</button>
+        <strong>{{flash.intro}}</strong>{{{flash.message}}}
+    </div>
+{{/if}}
 <img src="/img/logo.png" alt="Meadowlark Travel Logo"/></head>
 <a href="/">home</a>
 <hr/>

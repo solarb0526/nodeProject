@@ -18,12 +18,15 @@ var handlebars = require('express-handlebars').create({
 });
 
 var credentials = require('./credentials.js');
+var cartValidation = require('./lib/cartValidation.js');
 app.use(require('cookie-parser')(credentials.cookieSecret));
 app.use(require('express-session')({
     resave: false,
     saveUninitialized: false,
     secret: credentials.cookieSecret
 }));
+app.use(cartValidation.checkGuestCounts);
+app.use(cartValidation.checkWaivers);
 
 app.use(function (req, res, next) {
     res.locals.flash = req.session.flash;
